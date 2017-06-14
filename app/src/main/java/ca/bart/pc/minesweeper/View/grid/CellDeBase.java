@@ -57,8 +57,10 @@ public abstract class CellDeBase extends View {
         return isRevealed;
     }
 
-    public void setRevealed(boolean revealed) {
-        isRevealed = revealed;
+    public void setRevealed()
+    {
+        isRevealed = true;
+        invalidate();
     }
 
     public boolean isClicked() {
@@ -92,11 +94,12 @@ public abstract class CellDeBase extends View {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
 
-        x=position % Engine.WIDTH;
-        y = position / Engine.HEIGHT;
+    public void setPosition(int x , int y){
+        this.x = x;
+        this.y = y;
+
+        this.position = y * Engine.WIDTH + x;
 
         invalidate();
     }
