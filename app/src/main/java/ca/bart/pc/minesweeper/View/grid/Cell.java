@@ -48,7 +48,7 @@ public class Cell extends CellDeBase implements View.OnClickListener, View.OnLon
                     drawNumber(canvas);
                 }
             }else {
-                drawButton(canvas);
+                drawButtonPressed(canvas);
             }
         }
     }
@@ -65,26 +65,32 @@ public class Cell extends CellDeBase implements View.OnClickListener, View.OnLon
     }
 
     private void drawFlag(Canvas canvas){
-        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.ButtonFlag.png);
+        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.buttonflag);
         drawable.setBounds(0,0,getWidth(), getHeight());
         drawable.draw(canvas);
     }
 
+
+    private void drawButtonPressed(Canvas canvas){
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.buttonvide);
+        drawable.setBounds(0,0,getWidth(), getHeight());
+        drawable.draw(canvas);
+    }
     private void drawButton(Canvas canvas){
-        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.Button);
+        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.button);
         drawable.setBounds(0,0,getWidth(), getHeight());
         drawable.draw(canvas);
 
     }
 
     private void drawBombExploded(Canvas canvas){
-        Drawable drawable = ContextCompat.getDrawable(getContext(), /*R.drawable. nom du fichier png de bombe exploser */);
+        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.buttonbomb);
         drawable.setBounds(0,0,getWidth(), getHeight());
         drawable.draw(canvas);
 
     }
     private void drawBomb(Canvas canvas){
-        Drawable drawable = ContextCompat.getDrawable(getContext(), /*R.drawable. nom du fichier png de bombe */);
+        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.buttonbomb);
         drawable.setBounds(0,0,getWidth(), getHeight());
         drawable.draw(canvas);
 
@@ -95,30 +101,30 @@ public class Cell extends CellDeBase implements View.OnClickListener, View.OnLon
 
         switch(getValue()){
             case 0:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_0*/);
+                drawable = ContextCompat.getDrawable(getContext(),R.drawable.button);
             case 1:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_1*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button1);
 
             case 2:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_2*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button2);
 
             case 3:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_3*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button3);
 
             case 4:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_4*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button4);
 
             case 5:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_5*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button5);
 
             case 6:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_6*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button6);
 
             case 7:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_7*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button7);
 
             case 8:
-                drawable = ContextCompat.getDrawable(getContext()/*, R.drawable.number_8*/);
+                drawable = ContextCompat.getDrawable(getContext(), R.drawable.button8);
 
         }
         drawable.setBounds(0,0,getWidth(), getHeight());
