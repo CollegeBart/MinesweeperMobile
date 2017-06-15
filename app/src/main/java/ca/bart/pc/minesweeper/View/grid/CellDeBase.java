@@ -11,19 +11,16 @@ import ca.bart.pc.minesweeper.Engine;
 
 public abstract class CellDeBase extends View {
 
-
     private int value;
-
-
     private boolean isBomb;
     private boolean isRevealed;
     private boolean isClicked;
     private boolean isFlagged;
 
-    private int x, y;
+    private int x , y;
     private int position;
 
-    public CellDeBase(Context context){
+    public CellDeBase(Context context ){
         super(context);
     }
 
@@ -37,13 +34,12 @@ public abstract class CellDeBase extends View {
         isClicked = false;
         isFlagged = false;
 
-        if(value == -1){
+        if( value == -1 ){
             isBomb = true;
         }
 
         this.value = value;
     }
-
 
     public boolean isBomb() {
         return isBomb;
@@ -57,8 +53,7 @@ public abstract class CellDeBase extends View {
         return isRevealed;
     }
 
-    public void setRevealed()
-    {
+    public void setRevealed() {
         isRevealed = true;
         invalidate();
     }
@@ -94,8 +89,7 @@ public abstract class CellDeBase extends View {
         return position;
     }
 
-
-    public void setPosition(int x , int y){
+    public void setPosition( int x , int y ){
         this.x = x;
         this.y = y;
 

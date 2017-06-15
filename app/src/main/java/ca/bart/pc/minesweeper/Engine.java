@@ -1,7 +1,10 @@
 package ca.bart.pc.minesweeper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ca.bart.pc.minesweeper.View.grid.Cell;
@@ -12,12 +15,16 @@ import ca.bart.pc.minesweeper.View.grid.Cell;
 
 public class Engine {
 
+
+    TextView mineRestante;
     private static Engine instance;
 
     private Context context;
 
     private Cell[][] MinesweeperGrid = new Cell[WIDTH][HEIGHT];
 
+
+    public boolean gridCreated;
     public static final int BOMB_NUMBER =10;
     public static final int WIDTH = 10;
     public static final int HEIGHT = 10;
@@ -41,6 +48,7 @@ public class Engine {
         int [][] GenerateGrid = Generator.generate(BOMB_NUMBER, WIDTH, HEIGHT);
         TestGrid.print(GenerateGrid, WIDTH, HEIGHT);
         setGrid(context,GenerateGrid);
+        gridCreated = true;
     }
 
     private void setGrid(final Context context, int[][] grid){
@@ -67,7 +75,7 @@ public class Engine {
     }
 
     public void click(int posX, int posY){
-        if(posX >= 0 &&  posY >= 0 && posX < WIDTH && posY < HEIGHT && getCellAt(posX,posY).isClicked()){
+        if(posX >= 0 &&  posY >= 0 && posX < WIDTH && posY < HEIGHT && !getCellAt(posX,posY).isClicked()){
             getCellAt(posX, posY).setClicked();
 
             if(getCellAt(posX, posY).getValue() == 0)
@@ -86,6 +94,7 @@ public class Engine {
             }
         }
         checkEnd();
+
     }
 
     private boolean checkEnd(){
@@ -111,6 +120,17 @@ public class Engine {
         boolean isFlagged = getCellAt(x,y).isFlagged();
         getCellAt(x,y).setFlagged(!isFlagged);
         getCellAt(x,y).invalidate();
+
+        int mine = BOMB_NUMBER;
+        if(isFlagged) {
+            mine++;
+        }
+        else {
+            mine--;
+        }
+
+
+        mineRestante.setText("Mines restante: " + mine);
     }
 
     private void onGameLost(){
@@ -122,5 +142,12 @@ public class Engine {
                 getCellAt(x,y).setRevealed();
             }
         }
+    }
+
+    public void Reset() {
+        int mine = BOMB_NUMBER;
+        gridCreated = false;
+        createGrid(context);
+        mineRestante.setText("Mines restante: " + mine);
     }
 }
