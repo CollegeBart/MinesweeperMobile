@@ -65,13 +65,13 @@ public class Cell extends CellDeBase implements View.OnClickListener, View.OnLon
     }
 
     private void drawFlag(Canvas canvas){
-        Drawable drawable = ContextCompat.getDrawable(getContext(), /*R.drawable. nom du fichier png du flag */);
+        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.ButtonFlag.png);
         drawable.setBounds(0,0,getWidth(), getHeight());
         drawable.draw(canvas);
     }
 
     private void drawButton(Canvas canvas){
-        Drawable drawable = ContextCompat.getDrawable(getContext(), /*R.drawable. nom du fichier png du bouton */);
+        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.Button);
         drawable.setBounds(0,0,getWidth(), getHeight());
         drawable.draw(canvas);
 
